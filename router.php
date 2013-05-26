@@ -7,7 +7,7 @@
  */
 function _query_rules () {
     return array(
-        '^q/([^/]+)/?$' => '_query=$matches[1]',
+        '^sample-query/([^/]+)/?$' => 'sample_query=$matches[1]',
     );
 }
 
@@ -23,7 +23,10 @@ function _init_query_object() {
     $_query = (object) array(
 
         // Choose a different template
-        'template' = false,
+        'template' => false,
+
+        // The same query
+        'sample_query' => false
 
     );
 
@@ -75,9 +78,16 @@ function _query_processor( &$query ) {
 
     } elseif ( $query->is_404() ) {
 
+
+    /* The sample query */
+
+    } elseif ( $q = get_query_var( 'sample_query' ) ) {
+
+        $_query->sample_query = 'Nice!';
+
     }
 
-    /* All queries */
+    /* Put something here to do suff in all queries */
 
 }
 
