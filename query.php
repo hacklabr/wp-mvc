@@ -77,6 +77,10 @@ function _query_processor( &$query ) {
 
     }
 
+    /* Template redirect */
+
+    $_query->template = get_query_var( 'template' );
+
     /* Put something here to do suff in all queries */
 
 }

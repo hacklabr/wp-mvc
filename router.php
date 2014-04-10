@@ -25,6 +25,7 @@ function _rewrite_rules( $rules ) {
     foreach( _query_rules() as $rule => $query ) {
         $rules[ $rule ] = $prefix . $query;
     }
+    return $rules;
 }
 
 add_action( 'pre_get_posts', '_pre_get_posts', 1 );
