@@ -101,3 +101,13 @@ containing a `$_query->custom_query` attribute to be used.
         <?php endif; ?>
 
     <?php wp_footer(); ?>
+
+## Rules
+
+So, using these guidelines also implies in some rules for developers:
+
+1. Never make queries or any theme logic outside the `_query_processor`. Always
+   use an attribute of `$_query` to pass data to the templates.
+2. Always use the `$_query->template` attribute to define wich template will be
+   loaded, and set it in the `query_processor` to be explicit wether you want
+   WordPress to choose it or not.
