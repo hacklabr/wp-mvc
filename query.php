@@ -79,7 +79,7 @@ function _query_processor( &$query ) {
 
     /* Template redirect */
 
-    $_query->template = get_query_var( 'template' );
+    $_query->template = ! $_query->template ? get_query_var( 'template' ) : false;
 
     /* Put something here to do suff in all queries */
 
