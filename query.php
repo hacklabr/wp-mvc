@@ -6,6 +6,7 @@
  * As the query processor relies on a global `$_query` object, we should
  * declare it and document each of the attributes of this object here.
  */
+add_action( 'init', '_init_query_object' );
 function _init_query_object() {
 
     global $_query;

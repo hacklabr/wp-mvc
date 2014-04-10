@@ -1,11 +1,10 @@
 <?php
 
+require_once( get_stylesheet_directory() . '/models.php' );
 require_once( get_stylesheet_directory() . '/rules.php' );
 require_once( get_stylesheet_directory() . '/query.php' );
 
 /* Main section */
-
-add_action( 'init', '_init_query_object' );
 
 add_action( 'query_vars', '_query_vars' );
 function _query_vars ( $query_vars ) {
@@ -37,20 +36,10 @@ function _pre_get_posts ( $query ) {
 }
 
 function _template_redirect( $template ) {
-    global $rpctvcom;
+    global $_query;
     $file = locate_template( $_query->template . '.php' );
     if ( !empty( $file ) ) {
         include( $file );
         exit();
     }
-}
-
-/* Model */
-
-$modelsdir = get_stylesheet_directory() . '/models/';
-$handle = opendir( $modelsdir );
-while( $f = readdir( $handle ) ) {
-    if ( !in_array( $f, array( '.', '..' ) )
-        && preg_match( '/\.php$/', $f ) )
-        require_once( $modelsdir . $f );
 }
